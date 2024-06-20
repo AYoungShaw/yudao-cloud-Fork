@@ -1,7 +1,12 @@
 package cn.iocoder.yudao.module.system.api.logger;
 
 import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.object.BeanUtils;
 import cn.iocoder.yudao.module.system.api.logger.dto.OperateLogCreateReqDTO;
+import cn.iocoder.yudao.module.system.api.logger.dto.OperateLogPageReqDTO;
+import cn.iocoder.yudao.module.system.api.logger.dto.OperateLogRespDTO;
+import cn.iocoder.yudao.module.system.dal.dataobject.logger.OperateLogDO;
 import cn.iocoder.yudao.module.system.service.logger.OperateLogService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +26,12 @@ public class OperateLogApiImpl implements OperateLogApi {
     public CommonResult<Boolean> createOperateLog(OperateLogCreateReqDTO createReqDTO) {
         operateLogService.createOperateLog(createReqDTO);
         return success(true);
+    }
+
+    @Override
+    public CommonResult<PageResult<OperateLogRespDTO>> getOperateLogPage(OperateLogPageReqDTO pageReqVO) {
+        PageResult<OperateLogDO> operateLogPage = operateLogService.getOperateLogPage(pageReqVO);
+        return success(BeanUtils.toBean(operateLogPage, OperateLogRespDTO.class));
     }
 
 }

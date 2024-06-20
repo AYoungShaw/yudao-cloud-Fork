@@ -60,7 +60,7 @@ mybatis-plus:
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
   mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: ${yudao.info.base-package}.module.*.dal.dataobject
+  type-aliases-package: ${yudao.info.base-package}.dal.dataobject
 
 --- #################### 定时任务相关配置 ####################
 
@@ -70,16 +70,6 @@ mybatis-plus:
 
 # Lock4j 配置项（单元测试，禁用 Lock4j）
 
-# Resilience4j 配置项
-resilience4j:
-  ratelimiter:
-    instances:
-      backendA:
-        limit-for-period: 1 # 每个周期内，允许的请求数。默认为 50
-        limit-refresh-period: 60s # 每个周期的时长，单位：微秒。默认为 500
-        timeout-duration: 1s # 被限流时，阻塞等待的时长，单位：微秒。默认为 5s
-        register-health-indicator: true # 是否注册到健康监测
-
 --- #################### 监控相关配置 ####################
 
 --- #################### 芋道相关配置 ####################
@@ -87,7 +77,7 @@ resilience4j:
 yudao:
   info:
     version: 1.0.0
-    base-package: cn.iocoder.yudao.module
+    base-package: cn.iocoder.yudao.module.pay
   pay:
     pay-notify-url: http://niubi.natapp1.cc/api/pay/order/notify
     refund-notify-url: http://niubi.natapp1.cc/api/pay/refund/notify
