@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -14,6 +15,10 @@ import javax.validation.constraints.NotNull;
 */
 @Data
 public class PayAppBaseVO {
+
+    @Schema(description = "应用标识", requiredMode = Schema.RequiredMode.REQUIRED, example = "yudao")
+    @NotEmpty(message = "应用标识不能为空")
+    private String appKey;
 
     @Schema(description = "应用名", requiredMode = Schema.RequiredMode.REQUIRED, example = "小豆")
     @NotNull(message = "应用名不能为空")
